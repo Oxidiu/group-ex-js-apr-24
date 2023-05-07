@@ -11,13 +11,54 @@ function isPrime(num) {
   return true;
 }
 
-function getMax(arr) {
-  let sorted = arr.sort((a, b) => a - b)
-  return sorted[sorted.length - 1]
+const getMinMax = () => {
+  const result = [];
+  const min = dataArr.reduce((acc, curr) => acc < curr ? acc : curr, Infinity)
+  result.push(min);
+  const max = dataArr.reduce((acc, curr) => acc > curr ? acc : curr, 0)
+  result.push(max);
+  return result;
 }
 
-function getMin(arr) {
-  let sorted = arr.sort((a, b) => a - b)
-  return sorted[0]
+const minMax = getMinMax(dataArr);
+const [min, max] = minMax;
+
+class MinMax {
+  constructor(min, max) {
+    this.min = min;
+    this.max = max;
+  }
 }
+
+const minMaxObj = new MinMax(min, max);
+
+const addMinMax = ({min, max}) => {
+  return min + max;
+}
+
+const minMaxSum = addMinMax(minMaxObj)
+
+const stringfiedObj = JSON.stringify(minMaxObj)
+//----------Console Logging-----------
+console.log("minMax:");
+console.log(minMax);
+
+console.log("Destructured:");
+console.log("Min:");
+console.log(min);
+console.log("Max:");
+console.log(max);
+
+console.log("minMaxObj:");
+console.log(minMaxObj);
+
+console.log("MinMax Sum:")
+console.log(minMaxSum);
+
+console.log(`Our object has min ${minMaxObj.min} and max ${minMaxObj.max}, with a total of ${minMaxSum}`)
+
+console.log("JSON:");
+console.log(stringfiedObj);
+console.log(`StringfiedObj is of type ${typeof(stringfiedObj)}`)
+
 
